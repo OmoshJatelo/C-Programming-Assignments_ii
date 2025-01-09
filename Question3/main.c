@@ -17,3 +17,14 @@ double get_e_power_x(int terms, double x)
     return result;
 }
 
+int main()
+{
+    double x, output;
+    int terms;
+    printf("enter the number x:\n");
+    scanf("%lf",&x);
+    printf("enter the number of terms:\n");
+    scanf("%d",&terms);
+    output=get_e_power_x( terms,x);
+    printf("e raised to power %lf  expanded to the %dth term is approximately %lf",x,terms,output);
+    return 0;
