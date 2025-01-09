@@ -22,3 +22,21 @@ int main()
         grand_total+=total_sales[x];//increment the grand totoal with the total sales before moving to the next salesman
 
     }
+printf("\nName \t\tItem1 \tItem2  \tItem3 \tItem4 \tItem5 \tTotalSales\n");
+    printf("_________________________________________________________________\n");
+
+
+    for(int v=0;v<NUM_OF_SALESMEN;v++) /*display the above information*/
+    {
+        printf("%-10s",salesmen[v]);//give each sales man name a fieldwidth of 10 and align the names to the left wth a - sign
+        for(int w=0;w<NUM_ITEMS;w++)
+        {
+            printf("\t%d",items[v][w]);
+        }
+        printf("\t%d\t\n",total_sales[v]);
+    }
+    printf("\nGRAND TOTAL is %d\n\n",grand_total);
+
+    return 0;
+
+}
