@@ -1,48 +1,85 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+void printf_result(double result)
+{
+    printf("the result is %.3lf\n",result);
+}  
+
+void difference(double num2,double num1)
+{
+    double result=num1-num2;
+    //printf("%lf subtracted from %lf is %lf\n",num1,num2,result);
+    printf_result(result);
+}
+void sum(double num1, double num2)
+{
+    double result=num1+num2;
+    //printf("the summation of %lf and %lf is %lf\n",num1,num2,result);
+    printf_result(result);
+}
+void product(double num1, double num2)
+{
+    double result=num1*num2;
+    //printf("the product of %lf and %lf is %lf\n",num1,num2,result);
+    printf_result(result);
+}
+void quotient(double num1, double num2)
+{
+    if(num2==0)
+    {
+        printf("division by 0 is not possible\n");
+
+    }
+    else
+    {
+        double result=num1/num2;
+        //printf(" %.3lf divided by %.3lf is %.5lf\n",num1,num2,result);
+        printf_result(result);
+    }
+} 
+      
 
 int main()
 {
-    double num1, num2, result;
-    char operation;
+    double num1,num2;
+    char operator;
+    char menu[5][30]={
+        "Letter     Meaning\n",
+        "a          addition\n",
+        "s          subtraction\n",
+        "m          multiplication\n",
+        "d          division\n"
+    };
+    for(int n=0;n<5;n++)
+        printf("%s",menu[n]);
 
-    // Creating infinite loop
-    while (1)
+    printf("enter two  numbers:\n");
+    scanf("%lf%lf",&num1,&num2); 
+    printf("select an operator from the menu above:\n");  
+    scanf(" %c",&operator);
+    switch(operator)
     {
-        // Printing the operator menu
-        printf("Character\t Operation\n a\t\t add\n s\t\t subtract\n m\t\t multiply\n d\t\t divide\n");
+        case 'a':
+        sum(num1,num2);
+        break;
 
-        // Prompting the user for inputs
-        printf("Enter your first number followed by an operation character followed by your second number: ");
-        scanf("%lf %c %lf", &num1, &operation, &num2);
+        case 's':
+        difference(num2,num1);
+        break;
 
-        // Operator selection switching
-        switch (operation)
-        {
-            case 'a':
-                result = add(num1, num2);
-                printf_result(result);
-                break;
-            case 's':
-                result = subtract(num1, num2);
-                printf_result(result);
-                break;
-            case 'm':
-                result = multiply(num1, num2);
-                printf_result(result);
-                break;
-            case 'd':
-                result = divide(num1, num2);
-                if (num2 != 0)
-                {
-                    printf_result(result);
-                }
-                break;
-            default:
-                printf("Invalid operation.\n");
-                break;
-        }
+        case 'm':
+        product(num1,num2);
+        break;
+
+        case 'd':
+        quotient(num1,num2);
+        break;
+
+        default:
+        printf("please ensure you enter two integer numbers and a valid operator;either a, b, c or d\n");
+        
     }
+    
 
     return 0;
 }
